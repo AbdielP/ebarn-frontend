@@ -8,6 +8,9 @@ const routes: Routes = [
   {
     path: 'ofertas', loadChildren: () => import('./public/pages/oferts/oferts.module').then(m => m.OfertsModule)
   },
+  {
+    path: 'admin', loadChildren: () => import('./admin/pages/dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full'}, // Ruta vacía.
   { path: '**', redirectTo: 'home', pathMatch: 'full'} // NOT-PAGE-FOUND iría aquí.
 ];
