@@ -5,6 +5,6 @@ html, body {
     /* background-size: cover; */
     
     /* background-attachment: fixed; */
-    color: #424242;
-    font-size: .9rem;
+    color: #424242!important;
+    font-size: .9rem!important;
 }
