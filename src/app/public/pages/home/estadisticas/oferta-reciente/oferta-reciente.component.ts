@@ -17,7 +17,7 @@ export class OfertaRecienteComponent implements OnInit {
     this.recentOfert();
   }
 
-  recentOfert() {
+  recentOfert(): void {
     this.statsService.getStatistics(this.storedP).subscribe((resp: any) => {
       if (resp.ok) {
         this.ofertaReciente = resp.ofert_stats;
