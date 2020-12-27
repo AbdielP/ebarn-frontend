@@ -12,7 +12,7 @@ export class EstadisticasService {
   private SERVER_URL = environment.SERVER_URL;
 
   constructor(private http: HttpClient) { }
-  
+
   // Servicio para estadisticas generales
   getStatistics(storedProcedure: any): Observable<any> {
     return this.http.get(`${this.SERVER_URL}/stats/general/${storedProcedure}`)
