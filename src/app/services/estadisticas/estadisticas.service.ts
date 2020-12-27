@@ -14,8 +14,7 @@ export class EstadisticasService {
   constructor(private http: HttpClient) { }
 
   getStatistics(storedProcedure: any): Observable<any> {
-    console.log('WTF!?', storedProcedure);
-    return this.http.get(`${this.SERVER_URL}/stats/general?stored=${'sp_select_max_oferta()'}`)
+    return this.http.get(`${this.SERVER_URL}/stats/general/${storedProcedure}`)
     .pipe((catchError(err => [
       console.log('ERROR: ', err)
     ])));

@@ -20,7 +20,7 @@ export class OfertaRecienteComponent implements OnInit {
   recentOfert() {
     this.statsService.getStatistics(this.storedP).subscribe((resp: any) => {
       if (resp.ok) {
-        this.ofertaReciente = resp.recent_ofert;
+        this.ofertaReciente = resp.ofert_stats;
       }
     });
   }
