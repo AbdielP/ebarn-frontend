@@ -20,7 +20,6 @@ export class OfertaRecienteComponent implements OnInit {
     this.statsService.selectRecentOfert().subscribe((resp: any) => {
       if (resp.ok) {
         this.ofertaReciente = resp.recent_ofert;
-        console.log(this.ofertaReciente);
       }
     });
   }

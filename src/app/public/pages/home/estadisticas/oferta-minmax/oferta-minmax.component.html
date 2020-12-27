@@ -1,0 +1,58 @@
+<div *ngIf="ofertaMin != ''" class="card flex-md-row opaco">
+    <div class="card-body opaco">
+
+        <div class="row">
+            <div class="col-md-7">
+                <h5 class="card-title text-secondary"><i class="fas fa-arrow-up"></i> Oferta más alta</h5>
+            </div>
+            <div class="col-md-5">
+                <h5 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Precio</span>
+                <span class='badge badge-warning badge-pill'>${{ofertaMax.precio}}</span>
+                </h5>
+            </div>
+        </div>
+
+        <hr class="pt-0 mt-0">
+        <div class="row">
+            <h6 class="card-subtitle mb-2 ml-3 text-secondary">Producto:</h6>
+            <h6 class='card-subtitle mb-2 ml-3 text-warning'>{{ofertaMax.prod}}</h6>
+        </div>
+        <p class='card-text'>".$max_precio['descripcion']."</p>
+        <button type='button' class='btn btn-sm btn-light'>
+            Cantidad <span class='badge badge-warning'>{{ofertaMax.qty}}</span>
+        </button>
+        <button type='button' class='btn btn-sm btn-light'>
+            <span class='badge badge-warning text-capitalize'>{{ofertaMax.unt}}</span>
+        </button>
+    </div>
+    <!-- OFERTA BAJA  -->
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-md-7">
+                <h5 class="card-title text-secondary"><i class="fas fa-arrow-down"></i> Oferta más baja</h5>
+            </div>
+            <div class="col-md-5">
+                <h5 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Precio</span>
+                <span class='badge badge-success badge-pill'>${{ofertaMin.precio}}</span>
+                </h5>
+            </div>
+        </div>
+
+        <hr class="pt-0 mt-0">
+        <div class="row">
+            <h6 class="card-subtitle mb-2 ml-3 text-secondary">Producto:</h6>
+            <h6 class='card-subtitle mb-2 ml-3 text-success'>{{ofertaMin.prod}}</h6>
+        </div>
+      
+        <p class='card-text'>{{ofertaMin.descripcion}}</p>
+        <button type='button' class='btn btn-sm btn-light'>
+            Cantidad <span class='badge badge-success'>{{ofertaMin.qty}}</span>
+        </button>
+        <button type='button' class='btn btn-sm btn-light'>
+            <span class='badge badge-success text-capitalize'>{{ofertaMin.unt}}</span>
+        </button>
+    </div>
+</div>
