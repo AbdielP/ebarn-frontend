@@ -13,35 +13,12 @@ export class EstadisticasService {
 
   constructor(private http: HttpClient) { }
 
-  // getStatistics(sp: string): Observable<any> {
-  //   console.log('WTF!?', sp);
-  //   return this.http.get(`${this.SERVER_URL}/stats?wtf=${sp}`)
-  //   .pipe((catchError(err => [
-  //     console.log('ERROR: ', err)
-  //   ])));
-  // }
-
-  // SELECCIONA OFERTA MÁS RECIENTE
-  selectRecentOfert(): Observable<any> {
-    return this.http.get(`${this.SERVER_URL}/stats/recentofert`)
+  getStatistics(storedProcedure: any): Observable<any> {
+    console.log('WTF!?', storedProcedure);
+    return this.http.get(`${this.SERVER_URL}/stats/general?stored=${'sp_select_max_oferta()'}`)
     .pipe((catchError(err => [
       console.log('ERROR: ', err)
     ])));
   }
 
-  // SELECCIONAR OFERTA MÁS ALTA
-  selectMaxOfert(): Observable<any> {
-    return this.http.get(`${this.SERVER_URL}/stats/maxofert`)
-    .pipe((catchError(err => [
-      console.log('ERROR: ', err)
-    ])));
-  }
-
-  // SELECCIONAR OFERTA MÁS BAJA
-  selectMinOfert(): Observable<any> {
-    return this.http.get(`${this.SERVER_URL}/stats/minofert`)
-    .pipe((catchError(err => [
-      console.log('ERROR: ', err)
-    ])));
-  }
 }

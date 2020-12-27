@@ -9,6 +9,7 @@ import { EstadisticasService } from 'src/app/services/estadisticas/estadisticas.
 export class OfertaRecienteComponent implements OnInit {
 
   ofertaReciente = '';
+  storedP = 'sp_select_max_oferta()';
 
   constructor(private statsService: EstadisticasService) { }
 
@@ -16,8 +17,8 @@ export class OfertaRecienteComponent implements OnInit {
     this.recentOfert();
   }
 
-  recentOfert(): void {
-    this.statsService.selectRecentOfert().subscribe((resp: any) => {
+  recentOfert() {
+    this.statsService.getStatistics(this.storedP).subscribe((resp: any) => {
       if (resp.ok) {
         this.ofertaReciente = resp.recent_ofert;
       }

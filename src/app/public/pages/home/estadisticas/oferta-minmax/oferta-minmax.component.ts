@@ -14,24 +14,24 @@ export class OfertaMinmaxComponent implements OnInit {
   constructor(private statsService:EstadisticasService) { }
 
   ngOnInit(): void {
-    this.maxOfert();
-    this.minOfert();
+    // this.maxOfert();
+    // this.minOfert();
   }
 
-  private maxOfert() {
-    this.statsService.selectMaxOfert().subscribe((resp: any) => {
-      if (resp.ok) {
-        this.ofertaMax = resp.max_ofert;
-      }
-    });
-  }
+  // private maxOfert() {
+  //   this.statsService.selectMaxOfert().subscribe((resp: any) => {
+  //     if (resp.ok) {
+  //       this.ofertaMax = resp.max_ofert;
+  //     }
+  //   });
+  // }
 
-  private minOfert() {
-    this.statsService.selectMinOfert().subscribe((resp: any) => {
-      if (resp.ok) {
-        this.ofertaMin = resp.min_ofert;
-      }
-    });
-  }
+  // private minOfert() {
+  //   this.statsService.selectMinOfert().subscribe((resp: any) => {
+  //     if (resp.ok) {
+  //       this.ofertaMin = resp.min_ofert;
+  //     }
+  //   });
+  // }
 
 }
