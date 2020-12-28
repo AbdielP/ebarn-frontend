@@ -8,7 +8,7 @@ const routes: Routes = [
       path: '', loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
     },
     {
-      path: 'ofertas', loadChildren: () => import('./oferts/oferts.module').then(m => m.OfertsModule)
+      path: 'ofertas/:codpr', loadChildren: () => import('./oferts/oferts.module').then(m => m.OfertsModule)
     },
   ]}
 ];
