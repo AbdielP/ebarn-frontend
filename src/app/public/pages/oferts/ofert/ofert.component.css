@@ -1,0 +1,5 @@
+@import "../../../../../assets/styles/public/main.css";
+
+.opaco {
+    background-color: var(--card-rgba);
+}
