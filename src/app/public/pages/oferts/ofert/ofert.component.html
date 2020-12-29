@@ -12,14 +12,14 @@
     
         <div class='mb-1 text-muted'>Fecha publicación: {{offert.createdAt | date:'short'}}</div>
         <p class='card-text mb-auto pb-2'>{{offert.info}}</p>
-        <h6 class='card-subtitle mt-1 text-success'>{{offert.precio}} (USD) Precio por libra.</h6>
+        <h6 class='card-subtitle mt-1 text-success'>{{offert.precio}}$ (USD) Precio por libra.</h6>
         
         </div>
         <div class='card-body card-productor'>
             <h4 class='d-flex justify-content-between align-items-center mb-3'>
             <span class='text-muted'>Precio</span>
         
-            <span class='badge badge-primary badge-pill'>${{offert.precio}}</span>
+            <span class='badge badge-primary badge-pill'>$ {{offert.precio}}</span>
             
             </h4>
             <ul class='list-group mb-3'>
