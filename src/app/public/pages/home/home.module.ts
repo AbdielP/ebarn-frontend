@@ -6,10 +6,11 @@ import { HomeComponent } from './home.component';
 import { OfertaRecienteComponent } from './estadisticas/oferta-reciente/oferta-reciente.component';
 import { OfertaMinmaxComponent } from './estadisticas/oferta-minmax/oferta-minmax.component';
 import { ProductosComponent } from './productos/productos.component';
+import { CategoriasComponent } from './categorias/categorias.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, OfertaRecienteComponent, OfertaMinmaxComponent, ProductosComponent],
+  declarations: [HomeComponent, OfertaRecienteComponent, OfertaMinmaxComponent, ProductosComponent, CategoriasComponent],
   imports: [
     CommonModule,
     HomeRoutingModule
