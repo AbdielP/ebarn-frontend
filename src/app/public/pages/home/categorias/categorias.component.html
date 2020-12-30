@@ -5,17 +5,8 @@
     </div>
     <small></small>
     <div class="row d-flex">
-        <div class="col-md-4 pt-3">
-            <a class="h6" [routerLink]="['/ofertas']">Lorem ipsum Placeat, deserunt?</a>
-        </div>
-        <div class="col-md-4 pt-3">
-            <a class="h6" [routerLink]="['/ofertas']">Lorem ipsum Placeat, deserunt?</a>
-        </div>
-        <div class="col-md-4 pt-3">
-            <a class="h6" [routerLink]="['/ofertas']">Lorem ipsum Placeat, deserunt?</a>
-        </div>
-        <div class="col-md-4 pt-3">
-            <a class="h6" [routerLink]="['/ofertas']">Lorem ipsum Placeat, deserunt?</a>
+        <div *ngFor="let category of categories" class="col-md-4 pt-3">
+            <a class="text-info h6" [routerLink]="['/ofertas']">{{category.catg}}</a>
         </div>
     </div>
 </div>
