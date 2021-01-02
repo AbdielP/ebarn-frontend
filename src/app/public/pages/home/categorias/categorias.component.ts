@@ -1,5 +1,5 @@
 import { CategoriesService } from 'src/app/services/categories.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-categorias',
@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class CategoriasComponent implements OnInit {
 
   categories = '';
+  @Output() emitirCategoria: EventEmitter<any> = new EventEmitter();
 
   constructor(private categoriesService: CategoriesService) { }
 
@@ -23,8 +24,8 @@ export class CategoriasComponent implements OnInit {
     });
   }
 
-  selectCategory(event, item): void {
-    console.log(item);
+  selectCategory(idcategoria): void {
+    this.emitirCategoria.emit(idcategoria);
   }
 
 }

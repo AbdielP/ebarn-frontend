@@ -11,5 +11,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  // Recibe el idcat emitido desde el componente hijo: app-categorias
+  getIdcategories(e: any): void {
+    console.log(e);
+  }
 
 }

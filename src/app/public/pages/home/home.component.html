@@ -19,7 +19,7 @@
             <app-oferta-reciente></app-oferta-reciente>
             <app-oferta-minmax></app-oferta-minmax>
             <hr>
-            <app-categorias></app-categorias>
+            <app-categorias (emitirCategoria)="getIdcategories($event)"></app-categorias>
             <app-productos></app-productos>
         </div>
     </div>
