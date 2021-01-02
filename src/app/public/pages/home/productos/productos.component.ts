@@ -1,5 +1,6 @@
 import { ProductsService } from 'src/app/services/products.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-productos',
@@ -9,11 +10,25 @@ import { Component, OnInit } from '@angular/core';
 export class ProductosComponent implements OnInit {
 
   products = '';
+  eventSubscription: Subscription;
+  @Input() events: Observable<any>;
 
   constructor(private productService: ProductsService) { }
 
   ngOnInit(): void {
+    this.subscribeEventIdcategoria();
     this.selectProducts();
+  }
+
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngOnDestroy(): void {
+    this.eventSubscription.unsubscribe();
+  }
+
+  subscribeEventIdcategoria(): void {
+    this.eventSubscription = this.events.subscribe(({idcategoria}) => {
+      console.log(idcategoria);
+    });
   }
 
   private selectProducts(): void{
