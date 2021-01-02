@@ -24,8 +24,8 @@ export class CategoriasComponent implements OnInit {
     });
   }
 
-  selectCategory(idcategoria): void {
-    this.emitirCategoria.emit(idcategoria);
+  selectCategory(categoria): void {
+    this.emitirCategoria.emit(categoria);
   }
 
 }

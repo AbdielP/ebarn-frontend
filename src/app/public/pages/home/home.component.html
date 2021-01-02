@@ -19,7 +19,7 @@
             <app-oferta-reciente></app-oferta-reciente>
             <app-oferta-minmax></app-oferta-minmax>
             <hr>
-            <app-categorias (emitirCategoria)="getIdcategories($event)"></app-categorias>
+            <app-categorias (emitirCategoria)="getCategories($event)"></app-categorias>
             <app-productos [events]="eventSubject.asObservable()"></app-productos>
         </div>
     </div>

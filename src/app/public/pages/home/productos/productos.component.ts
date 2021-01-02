@@ -9,6 +9,7 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class ProductosComponent implements OnInit {
 
+  infocategory = '';
   products = '';
   eventSubscription: Subscription;
   @Input() events: Observable<any>;
@@ -26,8 +27,9 @@ export class ProductosComponent implements OnInit {
   }
 
   subscribeEventIdcategoria(): void {
-    this.eventSubscription = this.events.subscribe(({idcategoria}) => {
-      console.log(idcategoria);
+    this.eventSubscription = this.events.subscribe(({categoria}) => {
+      // console.log(categoria);
+      this.infocategory = categoria;
     });
   }
 

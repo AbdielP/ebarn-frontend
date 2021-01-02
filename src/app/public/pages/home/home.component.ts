@@ -8,20 +8,21 @@ import { Subject } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
+  eventSubject: Subject<any> = new Subject<any>();
+
   constructor() { }
 
-  eventSubject: Subject<any> = new Subject<any>();
 
   ngOnInit(): void {
   }
   // Recibe el idcat emitido desde el componente hijo: app-categorias
-  getIdcategories(e: any): void {
+  getCategories(e: any): void {
     // Emite al idcat recibido hacia el componente hijo: app-productos
     this.emitToChildProductos(e);
   }
 
-  emitToChildProductos(idcategoria: number): void {
-    this.eventSubject.next({idcategoria});
+  emitToChildProductos(categoria: number): void {
+    this.eventSubject.next({categoria});
   }
 
 }

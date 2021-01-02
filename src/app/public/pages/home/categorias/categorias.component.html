@@ -6,7 +6,7 @@
     <small></small>
     <div class="row d-flex">
         <div *ngFor="let category of categories" class="col-md-4 d-flex flex-column justify-content-center pt-3">
-            <button class="btn btn-small lead text-info d-flex align-items-center p-1" (click)="selectCategory(category.idcat)"><i class="{{category.icono}} lead text-success mr-2"></i> {{category.catg}}</button>
+            <button class="btn btn-small lead text-info d-flex align-items-center p-1" (click)="selectCategory(category)"><i class="{{category.icono}} lead text-success mr-2"></i> {{category.catg}}</button>
             <!-- <a class="lead text-info d-flex align-items-center" [routerLink]="['/ofertas']"><i class="{{category.icono}} lead text-success mr-2"></i> {{category.catg}}</a> -->
             <small class="d-block">@{{category.descripcion}}</small>
         </div>
