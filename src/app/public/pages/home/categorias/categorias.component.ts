@@ -23,4 +23,8 @@ export class CategoriasComponent implements OnInit {
     });
   }
 
+  selectCategory(event, item): void {
+    console.log(item);
+  }
+
 }
