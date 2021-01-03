@@ -3,3 +3,7 @@
 .opaco {
     background-color: var(--card-rgba);
 }
+
+.wtf {
+    background-color: red;
+}

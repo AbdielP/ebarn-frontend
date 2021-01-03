@@ -9,7 +9,7 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class ProductosComponent implements OnInit {
 
-  infocategory = '';
+  infocategory: any = '';
   products = '';
   eventSubscription: Subscription;
   @Input() events: Observable<any>;
@@ -18,7 +18,7 @@ export class ProductosComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscribeEventIdcategoria();
-    this.selectProducts();
+    // this.selectProducts();
   }
 
   // tslint:disable-next-line: use-lifecycle-interface
@@ -28,13 +28,13 @@ export class ProductosComponent implements OnInit {
 
   subscribeEventIdcategoria(): void {
     this.eventSubscription = this.events.subscribe(({categoria}) => {
-      // console.log(categoria);
       this.infocategory = categoria;
+      this.selectProducts(this.infocategory.idcat);
     });
   }
 
-  private selectProducts(): void{
-    this.productService.getProducts('sp_select_productos()').subscribe((resp: any) => {
+  private selectProducts(idcategoria: number): void{
+    this.productService.getProducts(`sp_select_productos(${idcategoria})`).subscribe((resp: any) => {
       this.products = resp.products;
     });
   }
