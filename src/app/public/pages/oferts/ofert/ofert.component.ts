@@ -29,7 +29,7 @@ export class OfertComponent implements OnInit {
   getOfferts(codigo: string): void {
      this.offertService.selectOferts(`sp_select_ofertas_codigo('${codigo}')`).subscribe((resp: any) => {
       this.offerts = resp.offerts;
-      console.log(resp.offerts);
+      // console.log(resp.offerts);
     });
   }
 

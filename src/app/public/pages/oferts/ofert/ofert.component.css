@@ -3,3 +3,7 @@
 .opaco {
     background-color: var(--card-rgba);
 }
+
+.test {
+    background-color: red;
+}
