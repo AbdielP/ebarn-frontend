@@ -12,9 +12,9 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
-
   ngOnInit(): void {
   }
+
   // Recibe el idcat emitido desde el componente hijo: app-categorias
   getCategories(e: any): void {
     // Emite al idcat recibido hacia el componente hijo: app-productos

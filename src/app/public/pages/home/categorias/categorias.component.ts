@@ -1,3 +1,4 @@
+import { LocalstorageService } from 'src/app/services/localstorage/localstorage.service';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
@@ -11,7 +12,7 @@ export class CategoriasComponent implements OnInit {
   categories = '';
   @Output() emitirCategoria: EventEmitter<any> = new EventEmitter();
 
-  constructor(private categoriesService: CategoriesService) { }
+  constructor(private categoriesService: CategoriesService, private localStorageService: LocalstorageService) { }
 
   ngOnInit(): void {
     this.selectCategories();
@@ -26,6 +27,7 @@ export class CategoriasComponent implements OnInit {
 
   selectCategory(categoria): void {
     this.emitirCategoria.emit(categoria);
+    this.localStorageService.setCategory(categoria);
   }
 
 }
