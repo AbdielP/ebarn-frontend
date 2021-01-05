@@ -4,7 +4,10 @@
         <div class="row">
             <div class="col-md-3 d-flex flex-column justify-content-center align-items-center">
                 <div class="row">
-                    <p class='text-secondary text-center'> <i class="fas fa-exclamation-circle text-warning"></i> Esta zona tiene el acceso restringido. Para entrar debe identificarse.</p>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <i class="fas fa-exclamation-circle text-warning lead mr-2 mb-2"></i> 
+                        <p class='text-secondary text-justify'>Para utilizar las funciones de compra online y publicación de ofertas debe identificarse.</p>
+                    </div>
                 </div>
                 
             </div>
@@ -20,7 +23,7 @@
                 <footer class="mt-4 text-muted text-center text-small h6">
                      <p class="mb-1">&copy; 2020 - Proyecto final Desarrollo de software 7</p>
                         <ul class="list-inline">
-                        <li class="list-inline-item"><a href="index.php">Home</a></li>
+                        <li class="list-inline-item"><a [routerLink]="['/']" routerLinkActive="router-link-active" >Ir a inicio</a></li>
                     </ul>
                     <hr>
                 </footer>
@@ -30,9 +33,12 @@
                     <i class="fab fa-cc-paypal text-secondary h2 m-2"></i>
                 </div>
             </div>
-            <div class="col-md-4 d-flex justify-content-start align-items-center">
-                <p class='text-secondary'>Nota: Si no dispone de identificación o tiene problemas para entrar
-                ponganse en contacto con el <a href='MAILTO:webmaster@correofake.com'>administrador del sitio</a>.</p>
+            <div class="col-md-4 d-flex flex-column justify-content-center align-items-center">
+                <p class="lead">¿Aún no tienes cuenta?</p>
+                <p class="text-secondary text-center">Registrese para comenzar a publicar ofertas o comprar productos en linea desde nuestra aplicación.</p>
+                <!-- <p class='text-secondary'>¿Aún no tienes cuenta?. <a [routerLink]="['/forms/register']">Registrese aquí</a> para comenzar a publicar ofertas o comprar productos.
+                ponganse en contacto con el </p> -->
+                <a [routerLink]="['/forms/register']"><i class="fas fa-key"></i> Registrese aquí</a>
             </div>
             
         </div>
