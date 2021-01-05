@@ -1,0 +1,12 @@
+@import '../../../../../assets/styles/public/main.css';
+
+.opaco {
+    background-color: var(--card-rgba);
+}
+
+.account-card {
+    cursor: pointer;
+    box-shadow: 5px 5px 5px #aaaaaa;
+}.account-card:hover {
+    box-shadow: none;
+}
