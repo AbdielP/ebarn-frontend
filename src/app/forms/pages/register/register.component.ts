@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
+  tipoCuenta = '';
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  getTipoCuenta(tipoCuenta: any): void {
+    // console.log(tipoCuenta);
+    this.tipoCuenta = tipoCuenta;
   }
 
 }

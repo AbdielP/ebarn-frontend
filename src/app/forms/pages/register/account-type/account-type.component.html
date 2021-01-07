@@ -1,4 +1,6 @@
 <div class="col-md-9">
+  <!-- DIV TIPO DE CUENTA  -->
+  <ng-container *ngIf="!ocultarTipoCuenta">
     <div *ngFor="let typeacc of typeAccounts" class="mb-3 opaco account-card" (click)="getTypeAcc(typeacc)">
         <img class="card-img-top" src="../../../../assets/img/temporal.png" alt="Card image cap">
         <div class="card-body">
@@ -8,4 +10,44 @@
           <p class="card-text"><small class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, eveniet.</small></p>
         </div>
     </div>
+  </ng-container>
+  <!-- DIV TIPO DE PERSONA  -->
+  <ng-container *ngIf="ocultarTipoCuenta">
+    <div class="row">
+
+      <div class="col-md-6" (click)="persona(1)">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex justify-content-center">
+              <i class="fas fa-user display-4 text-secondary m-2"></i>
+            </div>
+            <h5 class="card-title text-info text-center">Registrarme como Persona Natural</h5>
+            <hr>
+            <p class="card-text lead text-justify">El registro se realizará con su <b class="text-info">nombre</b> y <b class="text-info">apellido</b>. Deberá colocar un correo eléctronico para iniciar sesión.</p>
+            <button class="btn btn-sm btn-block btn-info">Continuar registro</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6" (click)="persona(2)">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex justify-content-center">
+              <i class="fas fa-user-tie display-4 text-secondary m-2"></i>
+            </div>
+            <h5 class="card-title text-success text-center">Registrarme como Persona Jurídica</h5>
+            <hr>
+            <p class="card-text lead text-justify">Deseo registrar <b class="text-success">mi empresa</b>. Deberá colocar información de contacto de su empresa y colocar un correo electronico de contacto y para iniciar sesión.</p>
+            <button class="btn btn-sm btn-block btn-success">Continuar registro</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <hr class="mt-5">
+    <div class="row d-flex justify-content-center">
+      <button class="btn btn-link mt-4"><i class="fas fa-chevron-left"></i> Volver atrás</button>
+    </div>
+  </ng-container>
+  
 </div>

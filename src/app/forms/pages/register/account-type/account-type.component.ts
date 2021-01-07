@@ -1,5 +1,5 @@
 import { RegisterService } from 'src/app/services/accounts/register.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-account-type',
@@ -9,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class AccountTypeComponent implements OnInit {
 
   typeAccounts = '';
+  ocultarTipoCuenta = false;
+
+  @Output() emititirTipoCuenta: EventEmitter<any> = new EventEmitter();
 
   constructor(private registerService: RegisterService) { }
 
@@ -17,15 +20,20 @@ export class AccountTypeComponent implements OnInit {
   }
 
   private selectAccountTypes(): void {
-    this.registerService.registerService(`sp_select_tipo_cuentas()`).subscribe((resp: JSON) => {
+    this.registerService.registerService(`sp_select_tipo_cuentas()`).subscribe((resp: any) => {
       // console.log(resp);
       this.typeAccounts = resp.regist;
-      // console.log(this.typeAccounts);
     });
   }
 
   getTypeAcc(tacc: Array<any>): void {
-    console.log(tacc);
+    this.ocultarTipoCuenta = true;
+    // console.log(tacc);
+    // this.emititirTipoCuenta.emit(tacc);
+  }
+
+  persona(persona: number): void {
+    console.log(persona);
   }
 
 }
