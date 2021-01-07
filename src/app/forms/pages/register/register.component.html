@@ -1,5 +1,5 @@
 <div class="container main">
-    <ng-container>
+    <!-- <ng-container *ngIf="tipoCuenta.length < 1">
         <app-account-type (emititirTipoCuenta)="getTipoCuenta($event)"></app-account-type>
         <div class="col-md-3">
             <p class="text-success text-center lead">¿Ya tienes una cuenta?</p>
@@ -7,6 +7,12 @@
             <hr>
             <a [routerLink]="['/forms/login']" routerLinkActive="router-link-active"  class="btn btn-sm btn-block btn-success">Iniciar sesión</a>
         </div>
-    </ng-container>
-    
+    </ng-container> -->
+
+    <!-- <app-form-natural *ngIf="tipoCuenta.persona == 1"></app-form-natural> -->
+    <!-- <app-form-juridica *ngIf="tipoCuenta.persona == 2"></app-form-juridica> -->
+
+    <app-form-natural></app-form-natural>
+    <!-- <app-form-juridica></app-form-juridica> -->
+
 </div>

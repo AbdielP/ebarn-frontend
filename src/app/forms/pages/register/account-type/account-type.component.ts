@@ -9,6 +9,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class AccountTypeComponent implements OnInit {
 
   typeAccounts = '';
+  infoAccounts = [];
   ocultarTipoCuenta = false;
 
   @Output() emititirTipoCuenta: EventEmitter<any> = new EventEmitter();
@@ -28,12 +29,16 @@ export class AccountTypeComponent implements OnInit {
 
   getTypeAcc(tacc: Array<any>): void {
     this.ocultarTipoCuenta = true;
-    // console.log(tacc);
+    this.infoAccounts = tacc;
     // this.emititirTipoCuenta.emit(tacc);
   }
 
-  persona(persona: number): void {
-    console.log(persona);
+  persona(tipopersona: number): void {
+    this.emititirTipoCuenta.emit({tipocuenta: this.infoAccounts, persona: tipopersona});
+  }
+
+  mostrarTipoCuenta(): void {
+    this.ocultarTipoCuenta = false;
   }
 
 }
