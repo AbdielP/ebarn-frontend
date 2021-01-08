@@ -1,5 +1,9 @@
+.font-options {
+    font-size: 1.3rem;
+}
+
 .borde {
-    border: 1px solid #E6E6E6;
+    border-bottom: 1px solid #25963f;
 }
 
 .test {
