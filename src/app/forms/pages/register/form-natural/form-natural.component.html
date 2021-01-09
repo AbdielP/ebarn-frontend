@@ -1,52 +1,111 @@
 <main class="container">
     <form action="">
-        <div class="row card-group">
-            <div class="card col-md-3 p-0 bg-success">
+        <div class="row -group">
+            <div class=" col-md-3 p-0 bg-light border rounded">
                 <div class="d-flex flex-column">
                     <div class="d-flex justify-content-start align-items-center borde p-4">
-                        <span class='badge badge-light font-options  badge-pill mx-3 display-4'>1</span>
-                        <p class="text-light lead m-0">Información personal</p>
+                        <!-- <span class='badge badge-warning rounded-circle font-options  badge-pill mx-2 display-4'>1</span> -->
+                        <i class="fas fa-pen-alt h3 text-info mr-3"></i> 
+                        <p class="text-secondary lead m-0">Información personal</p>
                     </div>
                     <div class="d-flex justify-content-start align-items-center borde p-4">
-                        <span class='badge badge-light font-options  badge-pill mx-3'>2</span>
-                        <p class="text-light lead m-0">Dirección</p>
+                        <!-- <span class='badge badge-warning rounded-circle font-options  badge-pill mx-2'>2</span> -->
+                        <i class="fas fa-map-marked-alt h3 text-info mr-3"></i>
+                        <p class="text-secondary lead m-0">Dirección</p>
                     </div>
-                    <div class="d-flex justify-content-start align-items-center p-4">
-                        <span class='badge badge-light font-options  badge-pill mx-3'>3</span>
-                        <p class="text-light lead m-0">Contacto</p>
+                    <div class="d-flex justify-content-start align-items-center borde p-4">
+                        <!-- <span class='badge badge-warning rounded-circle font-options  badge-pill mx-2'>3</span> -->
+                        <i class="fas fa-phone h3 text-info mr-3"></i>
+                        <p class="text-secondary lead m-0">Contacto</p>
                     </div>
                 </div>
             </div>
-            <div class="card col-md-9">
+
+            <div class=" d-flex flex-column col-md-9">
+                <!-- INFORMACIÓN PERSONAL  -->
                 <div class="row d-flex flex-column justify-content-center align-items-center">
-                    <h4 class="text-success mt-5">Información Personal</h4>
-                    <p class="text-center">Por favor, introduzca su información personal para poder continuar con el registro y creación de su cuenta.</p>
+                    <h4 class="text-info"><i class="fas fa-pen-alt"></i> Información Personal</h4>
+                    <p class="text-center p-1">Por favor, introduzca su información personal para crear su cuenta.</p>
                 </div>
 
-                <div class="row">
+                <div class="row p-3 m-2 mt-0 borde-full rounded">
                     <div class="col-md-6 mb-3">
-                        <label for="opcion1">Opción 1.</label> <br>
-                        <input id="opcion1" class="form-control form-control-sm" type="text" name="op1" placeholder="Opción/respuesta #1">
+                        <label for="opcion1" class="lead text-info">Primer Nombre</label> <br>
+                        <input id="opcion1" class="form-control form-control form-control-sm" type="text" placeholder="Abdiel">
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="opcion2">Opción 2.</label> <br>
-                        <input id="opcion2" class="form-control form-control-sm" type="text" name="op2" placeholder="Opción/respuesta #2">
+                        <label for="opcion2" class="lead text-info">Apellidos</label> <br>
+                        <input id="opcion2" class="form-control form-control form-control-sm" type="text" placeholder="Pinzón Carrera">
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="opcion3">Opción 3.</label> <br>
-                        <input id="opcion3" class="form-control form-control-sm" type="text" name="op3" placeholder="Opción/respuesta #3">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="opcion4">Opción 4.</label> <br>
-                        <input id="opcion4" class="form-control form-control-sm" type="text" name="op4" placeholder="Opción/respuesta #4">
-                    </div>
-                    <div class="col-md-12">
-                        <small>Si la pregunta simple o multiple tiene menos de 4 opciones, deje vacíos los campos que no requiera.</small>
+                        <label for="opcion3" class="lead text-info"><i class="fas fa-id-badge"></i> Cédula / Pasaporte</label> <br>
+                        <input id="opcion3" class="form-control form-control form-control-sm" type="text" placeholder="Ejemplo: 8-000-000">
                     </div>
                 </div>
+                <!-- FIN INFORMACIÓN PERSONAL  -->
+                <!-- DIRECCIÓN  -->
+                <div class="row d-flex flex-column justify-content-center align-items-center mt-1">
+                    <h4 class="text-info"><i class="fas fa-map-marked-alt"></i> Dirección</h4>
+                    <p class="text-center p-1">Registre su dirección para que los demás usuarios puedan conocer desde y hacía donde van dirigidas sus compras.</p>
+                </div>
+
+                <div class="row p-3 m-2 mt-0 borde-full rounded">
+                    <div class="col-md-6 mb-3">
+                        <label for="state" class="lead text-info"><i class="far fa-flag"></i> Provincia</label> <br>
+                        <select class="custom-select d-block w-100 form-control form-control-sm" id="state" name="edad" required>
+                            <option value="" disabled selected>Seleccione una provincia...</option>
+                            <option>Bocas Del Toro.</option>
+                            <option>Coclé.</option>
+                            <option>Colón.</option>
+                            <option>Chiriquí.</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="opcion2" class="lead text-info"><i class="fas fa-city"></i> Ciudad</label> <br>
+                        <input id="opcion2" class="form-control" type="text" placeholder="">
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="opcion3" class="lead text-info"><i class="fas fa-map-marker-alt"></i> Dirección</label> <br>
+                        <textarea class="form-control" name="multiple" rows="1" placeholder="Ejemplo: Urbanización Market, Calle 1." required></textarea>
+                    </div>
+                </div>
+                <!-- FIN DE DIRECCIÓN  -->
+                <!-- CONTACTO  -->
+                <div class="row d-flex flex-column justify-content-center align-items-center">
+                    <h4 class="text-info"><i class="fas fa-phone-volume"></i> Contacto</h4>
+                </div>
+
+                <div class="row p-3 m-2 mt-0 bg-light borde-full rounded">
+                    <div class="col-md-6 mb-3">
+                        <label for="opcion1" class="lead text-info"><i class="fas fa-phone"></i> Teléfono</label> <br>
+                        <input id="opcion1" class="form-control form-control form-control-sm" type="text" placeholder="800-000">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="opcion2" class="lead text-info"><i class="fas fa-mobile-alt"></i> Celular</label> <br>
+                        <input id="opcion2" class="form-control form-control form-control-sm" type="text" placeholder="6000-XXXX">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex flex-column">
+                            <label for="opcion3" class="lead text-success m-0"><i class="fas fa-at"></i> Correo eléctronico</label>
+                            <small><i class="fas fa-exclamation-triangle text-danger"></i> Registre un correo válido. <b class="text-danger">Utilice el mismo correo para iniciar sesión</b> luego de registrarse.</small>
+                        </div>
+                        <input id="opcion3" class="form-control form-control form-control-sm" type="email" placeholder="micorreo@ejemplo.com">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex flex-column">
+                            <label for="opcion3" class="lead text-success m-0"><i class="fas fa-mask"></i> Contraseña</label>
+                            <small><i class="fas fa-exclamation-triangle text-danger"></i> Utilice una contraseña de al menos 8 caracteres de longitud. puede usar letras mayúsculas, minúsculas, números y caracteres especiales.</small>
+                        </div>
+                        <input id="opcion3" class="form-control form-control form-control-sm" type="password" placeholder="">
+                    </div>
+                </div>
+                <!-- FIN DE CONTACTO  -->
+                <div class="col-md-12 m-2">
+                    <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fas fa-check"></i> Registrarse</button>
+                </div>
             </div>
+           
         </div>
-        
     </form>
     
 </main>
