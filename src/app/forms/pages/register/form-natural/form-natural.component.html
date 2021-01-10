@@ -1,58 +1,68 @@
 <main class="container">
-    <form action="">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-container">
         <div class="row">
+
             <div class=" col-md-3 p-0">
                 <div class="d-flex flex-column">
                     <div class="d-flex justify-content-start align-items-center borde p-4">
-                        <!-- <span class='badge badge-warning rounded-circle font-options  badge-pill mx-2 display-4'>1</span> -->
                         <i class="fas fa-pen-alt h3 text-info mr-3"></i> 
                         <p class="text-secondary lead m-0">Información personal</p>
                     </div>
                     <div class="d-flex justify-content-start align-items-center borde p-4">
-                        <!-- <span class='badge badge-warning rounded-circle font-options  badge-pill mx-2'>2</span> -->
                         <i class="fas fa-map-marked-alt h3 text-info mr-3"></i>
                         <p class="text-secondary lead m-0">Dirección</p>
                     </div>
                     <div class="d-flex justify-content-start align-items-center borde p-4">
-                        <!-- <span class='badge badge-warning rounded-circle font-options  badge-pill mx-2'>3</span> -->
                         <i class="fas fa-phone h3 text-info mr-3"></i>
                         <p class="text-secondary lead m-0">Contacto</p>
                     </div>
                 </div>
             </div>
 
-            <div class=" d-flex flex-column col-md-9">
+            <div class=" d-flex flex-column col-md-9 mt-3">
                 <!-- INFORMACIÓN PERSONAL  -->
                 <div class="row d-flex flex-column justify-content-center align-items-center">
-                    <h4 class="text-info"><i class="fas fa-pen-alt"></i> Información Personal</h4>
-                    <p class="text-center p-1">Por favor, introduzca su información personal para crear su cuenta.</p>
+                    <h5 class="text-info"><i class="fas fa-pen-alt"></i> Información Personal</h5>
+                    <p class="text-center p-1 m-0">Por favor, introduzca su información personal para crear su cuenta.</p>
                 </div>
 
-                <div class="row p-3 m-2 mt-0 borde-full rounded">
+                <div class="row p-3 m-2 borde-full rounded">
                     <div class="col-md-6 mb-3">
-                        <label for="opcion1" class="lead text-info">Primer Nombre</label> <br>
-                        <input id="opcion1" class="form-control form-control form-control-sm" type="text" placeholder="Abdiel">
+                        <label for="name" class="lead text-info m-0">Nombre</label> <br>
+                        <div *ngIf="registerForm.controls['name'].errors?.required" class="form-control-feedback">
+                            <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> El campo 'Nombre' es requerido</p>
+                        </div>
+                        <input formControlName="name" class="form-control form-control-sm" type="text" placeholder="">
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="opcion2" class="lead text-info">Apellidos</label> <br>
-                        <input id="opcion2" class="form-control form-control form-control-sm" type="text" placeholder="Pinzón Carrera">
+                        <label for="lastname" class="lead text-info m-0">Apellidos</label> <br>
+                        <div *ngIf="registerForm.controls['lastname'].errors?.required" class="form-control-feedback">
+                            <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> El campo 'Apellidos' es requerido</p>
+                        </div>
+                        <input formControlName="lastname" class="form-control form-control-sm" type="text" placeholder="">
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="opcion3" class="lead text-info"><i class="fas fa-id-badge"></i> Cédula / Pasaporte</label> <br>
-                        <input id="opcion3" class="form-control form-control form-control-sm" type="text" placeholder="Ejemplo: 8-000-000">
+                        <label for="idnumber" class="lead text-info m-0"><i class="far fa-address-card"></i> Cédula / Pasaporte</label> <br>
+                        <div *ngIf="registerForm.controls['idnumber'].errors?.required" class="form-control-feedback">
+                            <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> El campo 'Cédula / Pasaporte' es requerido</p>
+                        </div>
+                        <input formControlName="idnumber" class="form-control form-control-sm" type="text" placeholder="Ejemplo: 8-000-000">
                     </div>
                 </div>
                 <!-- FIN INFORMACIÓN PERSONAL  -->
                 <!-- DIRECCIÓN  -->
                 <div class="row d-flex flex-column justify-content-center align-items-center mt-1">
-                    <h4 class="text-info"><i class="fas fa-map-marked-alt"></i> Dirección</h4>
-                    <p class="text-center p-1">Registre su dirección para que los demás usuarios puedan conocer desde y hacía donde van dirigidas sus compras.</p>
+                    <h5 class="text-info"><i class="fas fa-map-marked-alt"></i> Dirección</h5>
+                    <p class="text-center p-1 m-0">Registre su dirección para que los demás usuarios puedan conocer desde y hacía donde van dirigidas sus compras.</p>
                 </div>
 
                 <div class="row p-3 m-2 mt-0 borde-full rounded">
                     <div class="col-md-6 mb-3">
-                        <label for="state" class="lead text-info"><i class="far fa-flag"></i> Provincia</label> <br>
-                        <select class="custom-select d-block w-100 form-control form-control-sm" id="state" name="edad" required>
+                        <label for="province" class="lead text-info m-0"><i class="fas fa-flag"></i> Provincia</label> <br>
+                        <div *ngIf="registerForm.controls['province'].errors?.required" class="form-control-feedback">
+                            <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> Seleccione una provincia para continuar.</p>
+                        </div>
+                        <select formControlName="province" class="custom-select d-block w-100 form-control form-control-sm">
                             <option value="" disabled selected>Seleccione una provincia...</option>
                             <option>Bocas Del Toro.</option>
                             <option>Coclé.</option>
@@ -61,47 +71,62 @@
                         </select>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="opcion2" class="lead text-info"><i class="fas fa-city"></i> Ciudad</label> <br>
-                        <input id="opcion2" class="form-control" type="text" placeholder="">
+                        <label for="city" class="lead text-info m-0"><i class="fas fa-city"></i> Ciudad</label> <br>
+                        <div *ngIf="registerForm.controls['city'].errors?.required" class="form-control-feedback">
+                            <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> El campo 'Ciudad' es requerido.</p>
+                        </div>
+                        <input formControlName="city" class="form-control" type="text" placeholder="">
                     </div>
                     <div class="col-md-12 mb-3">
-                        <label for="opcion3" class="lead text-info"><i class="fas fa-map-marker-alt"></i> Dirección</label> <br>
-                        <textarea class="form-control" name="multiple" rows="1" placeholder="Ejemplo: Urbanización Market, Calle 1." required></textarea>
+                        <label for="address" class="lead text-info m-0"><i class="fas fa-map-marker-alt"></i> Dirección</label> <br>
+                        <div *ngIf="registerForm.controls['address'].errors?.required" class="form-control-feedback">
+                            <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> El campo 'Dirección' es requerido.</p>
+                        </div>
+                        <textarea formControlName="address" class="form-control" rows="1" placeholder="Ejemplo: Urbanización Market, Calle 1."></textarea>
                     </div>
                 </div>
                 <!-- FIN DE DIRECCIÓN  -->
                 <!-- CONTACTO  -->
                 <div class="row d-flex flex-column justify-content-center align-items-center">
-                    <h4 class="text-info"><i class="fas fa-phone-volume"></i> Contacto</h4>
+                    <h5 class="text-info"><i class="fas fa-phone-volume"></i> Contacto</h5>
                 </div>
 
                 <div class="row p-3 m-2 mt-0 bg-light borde-full rounded">
                     <div class="col-md-6 mb-3">
-                        <label for="opcion1" class="lead text-info"><i class="fas fa-phone"></i> Teléfono</label> <br>
-                        <input id="opcion1" class="form-control form-control form-control-sm" type="text" placeholder="800-000">
+                        <label for="phone" class="lead text-info m-0"><i class="fas fa-phone"></i> Teléfono</label> <br>
+                        <input formControlName="phone" class="form-control form-control form-control-sm" type="text" placeholder="800-000">
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="opcion2" class="lead text-info"><i class="fas fa-mobile-alt"></i> Celular</label> <br>
-                        <input id="opcion2" class="form-control form-control form-control-sm" type="text" placeholder="6000-XXXX">
+                        <label for="cellphone" class="lead text-info m-0"><i class="fas fa-mobile-alt"></i> Celular</label> <br>
+                        <input formControlName="cellphone" class="form-control form-control form-control-sm" type="text" placeholder="6000-XXXX">
                     </div>
                     <div class="col-md-6 mb-3">
                         <div class="d-flex flex-column">
-                            <label for="opcion3" class="lead text-success m-0"><i class="fas fa-at"></i> Correo eléctronico</label>
+                            <label for="email" class="lead text-success m-0"><i class="fas fa-at"></i> Correo eléctronico</label>
+                            <div *ngIf="registerForm.controls['email'].errors?.required" class="form-control-feedback">
+                                <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> El campo 'Correo eléctronico' es requerido.</p>
+                            </div>
                             <small><i class="fas fa-exclamation-triangle text-danger"></i> Registre un correo válido. <b class="text-danger">Utilice el mismo correo para iniciar sesión</b> luego de registrarse.</small>
                         </div>
-                        <input id="opcion3" class="form-control form-control form-control-sm" type="email" placeholder="micorreo@ejemplo.com">
+                        <input formControlName="email" class="form-control form-control form-control-sm" type="email" placeholder="micorreo@ejemplo.com">
                     </div>
                     <div class="col-md-6 mb-3">
                         <div class="d-flex flex-column">
-                            <label for="opcion3" class="lead text-success m-0"><i class="fas fa-mask"></i> Contraseña</label>
+                            <label for="password" class="lead text-success m-0"><i class="fas fa-mask"></i> Contraseña</label>
+                            <div *ngIf="registerForm.controls['password'].errors?.required" class="form-control-feedback">
+                                <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> El campo 'Contraseña' es requerido.</p>
+                            </div>
+                            <div *ngIf="registerForm.controls['password'].errors?.minlength" class="form-control-feedback">
+                                <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> La contraseña debe ser de al menos 8 caracteres de longitud.</p>
+                            </div>
                             <small><i class="fas fa-exclamation-triangle text-danger"></i> Utilice una contraseña de al menos 8 caracteres de longitud. puede usar letras mayúsculas, minúsculas, números y caracteres especiales.</small>
                         </div>
-                        <input id="opcion3" class="form-control form-control form-control-sm" type="password" placeholder="">
+                        <input formControlName="password" class="form-control form-control form-control-sm" type="password" placeholder="">
                     </div>
                 </div>
                 <!-- FIN DE CONTACTO  -->
                 <div class="col-md-12 m-2">
-                    <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fas fa-check"></i> Registrarse</button>
+                    <button [disabled]="!registerForm.valid" type="submit" class="btn btn-primary btn-sm btn-block"><i class="fas fa-check"></i> Registrarse</button>
                 </div>
             </div>
            
@@ -109,69 +134,3 @@
     </form>
     
 </main>
-
-
-<!-- <main class="container">
-    <form class="p-4">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="text-success display-4">Formulario de registro </h3>
-                <h4 class="text-muted mb-0">Persona natural.</h4>
-                <hr>
-            </div>
-
-
-            <div class="col-md-4">
-                <div class='borde p-3'>
-                    <h5 class="lead"><i class='far fa-flag'></i> Datos personales</h5>
-                    <hr>
-                    <div class="mb-3">
-                        <label class="text-secondary">Nombre y apellido</label> <br>
-                        <input id="opcion1" class="form-control form-control-sm" type="text"  placeholder="Ejemplo: Abdiel Pinzón Carrera.">
-                    </div>
-                    <div class="mb-3">
-                        <label class="text-secondary">Cédula o pasaporte</label> <br>
-                        <input id="opcion1" class="form-control form-control-sm" type="text" placeholder="PE-0-00-0">
-                    </div>
-                </div>
-                         
-            </div>
-    
-            <div class="col-md-4">
-                <div class='borde p-3'>
-                    <h5 class="lead"><i class='far fa-flag'></i>Dirección y datos de ubicación</h5>
-                    <hr>
-                    <div class="mb-3">
-                        <label class="text-secondary">Provincia</label> <br>
-                        <input id="opcion1" class="form-control form-control-sm" type="text"  placeholder="Ejemplo: Abdiel Pinzón Carrera.">
-                    </div>
-                    <div class="mb-3">
-                        <label class="text-secondary">Ciudad</label> <br>
-                        <input id="opcion1" class="form-control form-control-sm" type="text" placeholder="PE-0-00-0">
-                    </div>
-                </div>
-                         
-            </div>
-    
-            <div class="col-md-4">
-                <div class='borde p-3'>
-                    <h5 class="lead"><i class='far fa-flag'></i> Información de contacto</h5>
-                    <hr>
-                    <div class="mb-3">
-                        <label class="text-secondary">Correo eléctronico</label> <br>
-                        <input id="opcion1" class="form-control form-control-sm" type="text"  placeholder="Ejemplo: Abdiel Pinzón Carrera.">
-                    </div>
-                    <div class="mb-3">
-                        <label class="text-secondary">Teléfono</label> <br>
-                        <input id="opcion1" class="form-control form-control-sm" type="text" placeholder="PE-0-00-0">
-                    </div>
-                    <div class="mb-3">
-                        <label class="text-secondary">Celular</label> <br>
-                        <input id="opcion1" class="form-control form-control-sm" type="text" placeholder="PE-0-00-0">
-                    </div>
-                </div>
-                         
-            </div>
-        </div>
-    </form>
-</main> -->
