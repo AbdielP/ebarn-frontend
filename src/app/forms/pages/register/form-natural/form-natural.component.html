@@ -23,7 +23,7 @@
                 <!-- INFORMACIÓN PERSONAL  -->
                 <div class="row d-flex flex-column justify-content-center align-items-center">
                     <h5 class="text-info"><i class="fas fa-pen-alt"></i> Información Personal</h5>
-                    <p class="text-center p-1 m-0">Por favor, introduzca su información personal para crear su cuenta.</p>
+                    <!-- <p class="text-center p-1 m-0">Por favor, introduzca su información personal para crear su cuenta.</p> -->
                 </div>
 
                 <div class="row p-3 m-2 borde-full rounded">
@@ -53,7 +53,7 @@
                 <!-- DIRECCIÓN  -->
                 <div class="row d-flex flex-column justify-content-center align-items-center mt-1">
                     <h5 class="text-info"><i class="fas fa-map-marked-alt"></i> Dirección</h5>
-                    <p class="text-center p-1 m-0">Registre su dirección para que los demás usuarios puedan conocer desde y hacía donde van dirigidas sus compras.</p>
+                    <!-- <p class="text-center p-1 m-0">Registre su dirección para que los demás usuarios puedan conocer desde y hacía donde van dirigidas sus compras.</p> -->
                 </div>
 
                 <div class="row p-3 m-2 mt-0 borde-full rounded">
@@ -100,11 +100,39 @@
                         <label for="cellphone" class="lead text-info m-0"><i class="fas fa-mobile-alt"></i> Celular</label> <br>
                         <input formControlName="cellphone" class="form-control form-control form-control-sm" type="text" placeholder="6000-XXXX">
                     </div>
+                    <!-- EXTRA-TELEPHONES FormArray -->
+                    <div class="container-fluid" formArrayName="extratelephones" *ngFor="let telefono of telephones.controls; let i = index">
+                        <div class="row" [formGroupName]=i>
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="lead text-info m-0"><i class="fas fa-phone"></i> Teléfono</label> <br>
+                                <input formControlName="phone" class="form-control form-control form-control-sm" type="text" placeholder="800-000">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="cell" class="lead text-info m-0"><i class="fas fa-mobile-alt"></i> Celular</label> <br>
+                                <input formControlName="cell" class="form-control form-control form-control-sm" type="text" placeholder="6000-XXXX">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 d-flex justify-content-end align-items-center">
+                                <button type="button" class="btn btn-link text-secondary m-0 p-0" (click)="removeExtraPhones(i)"><i class="fas fa-minus-circle"></i> Remover teléfonos adicionales</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-link text-primary m-0 p-0" (click)="addExtraPhones()"><i class="fas fa-plus-circle"></i> Añadir teléfonos adicionales</button>
+                        </div>
+                        <hr>
+                    </div>
                     <div class="col-md-6 mb-3">
                         <div class="d-flex flex-column">
                             <label for="email" class="lead text-success m-0"><i class="fas fa-at"></i> Correo eléctronico</label>
                             <div *ngIf="registerForm.controls['email'].errors?.required" class="form-control-feedback">
                                 <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> El campo 'Correo eléctronico' es requerido.</p>
+                            </div>
+                            <div *ngIf="registerForm.controls['email'].errors?.email" class="form-control-feedback">
+                                <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> Debe ingresar un correo válido.</p>
                             </div>
                             <small><i class="fas fa-exclamation-triangle text-danger"></i> Registre un correo válido. <b class="text-danger">Utilice el mismo correo para iniciar sesión</b> luego de registrarse.</small>
                         </div>

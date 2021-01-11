@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -8,14 +9,19 @@ import { Component, OnInit } from '@angular/core';
 export class RegisterComponent implements OnInit {
 
   tipoCuenta: any = [];
+  eventSubject: Subject<any> = new Subject<any>();
 
   constructor() { }
 
   ngOnInit(): void {}
 
   getTipoCuenta(tipoCuenta: any): void {
-    console.log(tipoCuenta);
     this.tipoCuenta = tipoCuenta;
+    this.emitToChildForms(this.tipoCuenta);
+  }
+
+  emitToChildForms(tipoCuenta: any): void{
+    this.eventSubject.next({tipoCuenta});
   }
 
 }

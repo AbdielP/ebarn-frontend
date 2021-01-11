@@ -1,5 +1,7 @@
+import { GeneralService } from 'src/app/services/general.service';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-form-natural',
@@ -8,12 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormNaturalComponent implements OnInit {
 
+  eventSubscription: Subscription;
+  @Input() events: Observable<any>;
+
   registerForm: any;
   phones: any;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private generalService: GeneralService) { }
 
   ngOnInit(): void {
+    this.subscribeEvent();
     this.registerForm = this.formBuilder.group({
       name: ['', {validators: [Validators.required]}],
       lastname: ['', {validators: [Validators.required]}],
@@ -24,9 +30,14 @@ export class FormNaturalComponent implements OnInit {
       phone: [''],
       cellphone: [''],
       extratelephones: this.formBuilder.array([]),
-      email: ['', {validators: [Validators.required]}],
+      email: ['', {validators: [Validators.required, Validators.email]}],
       password: ['', {validators: [Validators.required, Validators.minLength(8)]}]
     });
+  }
+
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngOnDestroy(): void {
+    this.eventSubscription.unsubscribe();
   }
 
   get telephones(): FormArray {
@@ -34,8 +45,15 @@ export class FormNaturalComponent implements OnInit {
     return this.registerForm.get('extratelephones') as FormArray;
   }
 
+  subscribeEvent(): void {
+    this.eventSubscription = this.events.subscribe(({tipoCuenta}) => {
+      console.log(tipoCuenta);
+    });
+  }
+
   onSubmit(): void {
     console.log(this.registerForm.getRawValue());
+    // Llamado al servicio para insertar/crear cuenta
   }
 
   addExtraPhones(): void {
@@ -44,6 +62,10 @@ export class FormNaturalComponent implements OnInit {
       cell: ['']
     });
     this.telephones.push(extraphones);
+  }
+
+  removeExtraPhones(i: number): void {
+    this.telephones.removeAt(i);
   }
 
 }
