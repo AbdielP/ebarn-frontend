@@ -1,0 +1,18 @@
+@import "../../../../../assets/styles/public/register.forms.css";
+@import "../../../../../assets/styles/public/main.css";
+
+.font-options {
+    font-size: var(--font-size-option);
+}
+
+.borde {
+    border-bottom: var(--borders);
+}
+
+.borde-full {
+    border: var(--borders);
+}
+
+.opaco {
+    background-color: var(--card-rgba);
+}

@@ -1,17 +1,13 @@
+@import "../../../../../assets/styles/public/register.forms.css";
+
 .font-options {
-    font-size: 1.3rem;
+    font-size: var(--font-size-option);
 }
 
 .borde {
-    /* border-bottom: 1px solid #25963f; */
-    /* border-bottom: 1px solid #118091; */
-    border-bottom: 1px solid #D8D8D8;
+    border-bottom: var(--borders);
 }
 
 .borde-full {
-    border: 1px solid #D8D8D8;
-}
-
-.wtf {
-    background-color: red;
+    border: var(--borders);
 }

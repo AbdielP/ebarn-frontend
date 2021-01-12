@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-form-juridica',
@@ -7,9 +9,61 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormJuridicaComponent implements OnInit {
 
-  constructor() { }
+  eventSubscription: Subscription;
+  @Input() events: Observable<any>;
+
+  registerForm: any;
+  phones: any;
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.subscribeEvent();
+    this.registerForm = this.formBuilder.group({
+      comname: ['', {validators: [Validators.required]}],
+      ruc: ['', {validators: [Validators.required]}],
+      name: ['', {validators: [Validators.required]}],
+      lastname: ['', {validators: [Validators.required]}],
+      idnumber: ['', {validators: [Validators.required]}],
+      province: ['', {validators: [Validators.required]}],
+      city: ['', {validators: [Validators.required]}],
+      address: ['', {validators: [Validators.required]}],
+      phone: [''],
+      cellphone: [''],
+      extratelephones: this.formBuilder.array([]),
+      email: ['', {validators: [Validators.required, Validators.email]}],
+      password: ['', {validators: [Validators.required, Validators.minLength(8)]}]
+    });
+  }
+  get telephones(): FormArray {
+    this.phones = this.registerForm.get('extratelephones') as FormArray;
+    return this.registerForm.get('extratelephones') as FormArray;
   }
 
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngOnDestroy(): void {
+    this.eventSubscription.unsubscribe();
+  }
+
+  subscribeEvent(): void {
+    this.eventSubscription = this.events.subscribe(({tipoCuenta}) => {
+      console.log(tipoCuenta);
+    });
+  }
+
+  onSubmit(): void{
+    console.log(this.registerForm.getRawValue());
+  }
+
+  addExtraPhones(): void {
+    const extraphones = this.formBuilder.group({
+      phone: [''],
+      cell: ['']
+    });
+    this.telephones.push(extraphones);
+  }
+
+  removeExtraPhones(i: number): void {
+    this.telephones.removeAt(i);
+  }
 }

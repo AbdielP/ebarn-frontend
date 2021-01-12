@@ -1,1 +1,192 @@
-<p>form-juridica works!</p>
+<main class="container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-container">
+        <div class="row">
+
+            <div class=" col-md-3 p-0">
+                <div class="d-flex flex-column">
+                    <div class="d-flex justify-content-start align-items-center borde p-4">
+                        <i class="fas fa-pen-fancy h3 text-success mr-3"></i> 
+                        <p class="text-secondary lead m-0">Datos de la empresa</p>
+                    </div>
+                    <div class="d-flex justify-content-start align-items-center borde p-4">
+                        <i class="fas fa-map-marked-alt h3 text-success mr-3"></i>
+                        <p class="text-secondary lead m-0">Dirección</p>
+                    </div>
+                    <div class="d-flex justify-content-start align-items-center borde p-4">
+                        <i class="fas fa-phone h3 text-success mr-3"></i>
+                        <p class="text-secondary lead m-0">Contacto</p>
+                    </div>
+                    <div class="d-flex justify-content-start align-items-center borde p-4">
+                        <i class="fas fa-lock h3 text-success mr-3"></i>
+                        <p class="text-secondary lead m-0">Correo y contraseña</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" d-flex flex-column col-md-9 mt-3">
+                <!-- INFORMACIÓN DE LA EMPRESA  -->
+                <div class="row d-flex flex-column justify-content-center align-items-center">
+                    <h5 class="text-success"><i class="fas fa-pen-fancy"></i> Datos de la empresa</h5>
+                </div>
+
+                <div class="row p-3 m-2 borde-full rounded">
+                    <div class="col-md-6 mb-3">
+                        <label for="comname" class="lead text-secondary m-0"><i class="fas fa-store"></i> Nombre del negocio / nombre comercial</label> <br>
+                        <div *ngIf="registerForm.controls['comname'].errors?.required" class="form-control-feedback">
+                            <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> Este campo es requerido</p>
+                        </div>
+                        <input formControlName="comname" class="form-control form-control-sm" type="text" placeholder="">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="ruc" class="lead text-secondary m-0">RUC / Razón social</label> <br>
+                        <div *ngIf="registerForm.controls['ruc'].errors?.required" class="form-control-feedback">
+                            <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> El campo 'RUC' es requerido</p>
+                        </div>
+                        <input formControlName="ruc" class="form-control form-control-sm" type="text" placeholder="">
+                    </div>
+                    <div class="col-md-12">
+                        <hr>
+                        <p class="lead text-success">Representante legal</p>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="name" class="lead text-secondary m-0">Nombre</label> <br>
+                        <div *ngIf="registerForm.controls['name'].errors?.required" class="form-control-feedback">
+                            <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> El campo 'Nombre' es requerido</p>
+                        </div>
+                        <input formControlName="name" class="form-control form-control-sm" type="text" placeholder="">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="lastname" class="lead text-secondary m-0">Apellidos</label> <br>
+                        <div *ngIf="registerForm.controls['lastname'].errors?.required" class="form-control-feedback">
+                            <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> El campo 'Apellidos' es requerido</p>
+                        </div>
+                        <input formControlName="lastname" class="form-control form-control-sm" type="text" placeholder="">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="idnumber" class="lead text-secondary m-0"><i class="far fa-address-card"></i> Cédula / Pasaporte</label> <br>
+                        <div *ngIf="registerForm.controls['idnumber'].errors?.required" class="form-control-feedback">
+                            <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> Este campo es requerido.</p>
+                        </div>
+                        <input formControlName="idnumber" class="form-control form-control-sm" type="text" placeholder="Ejemplo: 8-000-000">
+                    </div>
+                </div>
+                <!-- FIN INFORMACIÓN PERSONAL  -->
+
+                <!-- DIRECCIÓN  -->
+                <div class="row d-flex flex-column justify-content-center align-items-center mt-1">
+                    <h5 class="text-success"><i class="fas fa-map-marked-alt"></i> Dirección</h5>
+                </div>
+
+                <div class="row p-3 m-2 mt-0 borde-full rounded">
+                    <div class="col-md-6 mb-3">
+                        <label for="province" class="lead text-secondary m-0"><i class="fas fa-flag"></i> Provincia</label> <br>
+                        <div *ngIf="registerForm.controls['province'].errors?.required" class="form-control-feedback">
+                            <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> Seleccione una provincia para continuar.</p>
+                        </div>
+                        <select formControlName="province" class="custom-select d-block w-100 form-control form-control-sm">
+                            <option value="" disabled selected>Seleccione una provincia...</option>
+                            <option>Bocas Del Toro.</option>
+                            <option>Coclé.</option>
+                            <option>Colón.</option>
+                            <option>Chiriquí.</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="city" class="lead text-secondary m-0"><i class="fas fa-city"></i> Ciudad</label> <br>
+                        <div *ngIf="registerForm.controls['city'].errors?.required" class="form-control-feedback">
+                            <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> El campo 'Ciudad' es requerido.</p>
+                        </div>
+                        <input formControlName="city" class="form-control" type="text" placeholder="">
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="address" class="lead text-secondary m-0"><i class="fas fa-map-marker-alt"></i> Dirección</label> <br>
+                        <div *ngIf="registerForm.controls['address'].errors?.required" class="form-control-feedback">
+                            <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> El campo 'Dirección' es requerido.</p>
+                        </div>
+                        <textarea formControlName="address" class="form-control" rows="1" placeholder="Ejemplo: Urbanización Market, Calle 1."></textarea>
+                    </div>
+                </div>
+                <!-- FIN DE DIRECCIÓN  -->
+
+                 <!-- CONTACTO  -->
+                 <div class="row d-flex flex-column justify-content-center align-items-center">
+                    <h5 class="text-success"><i class="fas fa-phone-volume"></i> Contacto</h5>
+                </div>
+
+                <div class="row p-3 m-2 mt-0 opaco borde-full rounded">
+                    <div class="col-md-6 mb-3">
+                        <label for="phone" class="lead text-secondary m-0"><i class="fas fa-phone"></i> Teléfono</label> <br>
+                        <input formControlName="phone" class="form-control form-control form-control-sm" type="text" placeholder="800-000">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="cellphone" class="lead text-secondary m-0"><i class="fas fa-mobile-alt"></i> Celular</label> <br>
+                        <input formControlName="cellphone" class="form-control form-control form-control-sm" type="text" placeholder="6000-XXXX">
+                    </div>
+                    <!-- EXTRA-TELEPHONES FormArray -->
+                    <div class="container-fluid" formArrayName="extratelephones" *ngFor="let telefono of telephones.controls; let i = index">
+                        <div class="row" [formGroupName]=i>
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="lead text-success m-0"><i class="fas fa-phone"></i> Teléfono</label> <br>
+                                <input formControlName="phone" class="form-control form-control form-control-sm" type="text" placeholder="800-000">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="cell" class="lead text-success m-0"><i class="fas fa-mobile-alt"></i> Celular</label> <br>
+                                <input formControlName="cell" class="form-control form-control form-control-sm" type="text" placeholder="6000-XXXX">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 d-flex justify-content-end align-items-center">
+                                <button type="button" class="btn btn-link text-secondary m-0 p-0" (click)="removeExtraPhones(i)"><i class="fas fa-minus-circle"></i> Remover teléfonos adicionales</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-link text-primary m-0 p-0" (click)="addExtraPhones()"><i class="fas fa-plus-circle"></i> Añadir teléfonos adicionales</button>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- FIN DE CONTACTO  -->
+
+                <!-- CORREO Y CONTRASEÑA  -->
+                <div class="row d-flex flex-column justify-content-center align-items-center">
+                    <h5 class="text-success"><i class="fas fa-user-lock"></i> Correo y contraseña</h5>
+                </div>
+                <div class="row p-3 m-2 mt-0 opaco borde-full rounded">
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex flex-column">
+                            <label for="email" class="lead text-success m-0"><i class="fas fa-at"></i> Correo eléctronico</label>
+                            <div *ngIf="registerForm.controls['email'].errors?.required" class="form-control-feedback">
+                                <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> El campo 'Correo eléctronico' es requerido.</p>
+                            </div>
+                            <div *ngIf="registerForm.controls['email'].errors?.email" class="form-control-feedback">
+                                <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> Debe ingresar un correo válido.</p>
+                            </div>
+                            <small><i class="fas fa-exclamation-triangle text-danger"></i> Registre un correo válido. <b class="text-danger">Utilice el mismo correo para iniciar sesión</b> luego de registrarse.</small>
+                        </div>
+                        <input formControlName="email" class="form-control form-control form-control-sm" type="email" placeholder="micorreo@ejemplo.com">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex flex-column">
+                            <label for="password" class="lead text-success m-0"><i class="fas fa-mask"></i> Contraseña</label>
+                            <div *ngIf="registerForm.controls['password'].errors?.required" class="form-control-feedback">
+                                <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> El campo 'Contraseña' es requerido.</p>
+                            </div>
+                            <div *ngIf="registerForm.controls['password'].errors?.minlength" class="form-control-feedback">
+                                <p class="m-0 text-danger text-center"><i class="fas fa-exclamation-circle"></i> La contraseña debe ser de al menos 8 caracteres de longitud.</p>
+                            </div>
+                            <small><i class="fas fa-exclamation-triangle text-danger"></i> Utilice una contraseña de al menos 8 caracteres de longitud. puede usar letras mayúsculas, minúsculas, números y caracteres especiales.</small>
+                        </div>
+                        <input formControlName="password" class="form-control form-control form-control-sm" type="password" placeholder="">
+                    </div>
+                </div>
+                <div class="col-md-12 m-2">
+                    <button [disabled]="!registerForm.valid" type="submit" class="btn btn-primary btn-sm btn-block"><i class="fas fa-check"></i> Registrarse</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</main>
