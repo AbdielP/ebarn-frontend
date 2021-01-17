@@ -31,7 +31,9 @@ export class FormNaturalComponent implements OnInit {
       cellphone: [''],
       extratelephones: this.formBuilder.array([]),
       email: ['', {validators: [Validators.required, Validators.email]}],
-      password: ['', {validators: [Validators.required, Validators.minLength(8)]}]
+      password: ['', {validators: [Validators.required, Validators.minLength(8)]}],
+      typeaccount: [''],
+      persona: ['']
     });
   }
 
@@ -47,13 +49,19 @@ export class FormNaturalComponent implements OnInit {
 
   subscribeEvent(): void {
     this.eventSubscription = this.events.subscribe(({tipoCuenta}) => {
-      console.log(tipoCuenta);
+      this.registerForm.patchValue({
+        typeaccount: tipoCuenta.tipocuenta.tacc,
+        persona: tipoCuenta.persona
+      });
+      console.log(tipoCuenta); // COLOCAR LOS CAMPOS QUE SEAN NECESARIOS EN EL registerForm
     });
   }
 
   onSubmit(): void {
-    console.log(this.registerForm.getRawValue());
     // Llamado al servicio para insertar/crear cuenta
+    this.generalService.insertAccount(this.registerForm.getRawValue()).subscribe((resp: any) => {
+      console.log(resp);
+    });
   }
 
   addExtraPhones(): void {

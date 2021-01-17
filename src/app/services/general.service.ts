@@ -13,8 +13,8 @@ export class GeneralService {
 
   constructor(private http: HttpClient) { }
 
-  insert(storedProcedure: string, body: any): Observable<any> {
-    return this.http.post(`${this.SERVER_URL}/insert/${storedProcedure}`, body)
+  insertAccount(body: any): Observable<any> {
+    return this.http.post(`${this.SERVER_URL}/insertacc`, body)
     .pipe((catchError(err => [
       console.log('ERROR: ', err)
     ])));

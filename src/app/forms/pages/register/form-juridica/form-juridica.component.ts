@@ -32,7 +32,9 @@ export class FormJuridicaComponent implements OnInit {
       cellphone: [''],
       extratelephones: this.formBuilder.array([]),
       email: ['', {validators: [Validators.required, Validators.email]}],
-      password: ['', {validators: [Validators.required, Validators.minLength(8)]}]
+      password: ['', {validators: [Validators.required, Validators.minLength(8)]}],
+      typeaccount: [''],
+      persona: ['']
     });
   }
   get telephones(): FormArray {
@@ -47,6 +49,10 @@ export class FormJuridicaComponent implements OnInit {
 
   subscribeEvent(): void {
     this.eventSubscription = this.events.subscribe(({tipoCuenta}) => {
+      this.registerForm.patchValue({
+        typeaccount: tipoCuenta.tipocuenta.tacc,
+        persona: tipoCuenta.persona
+      });
       console.log(tipoCuenta);
     });
   }
