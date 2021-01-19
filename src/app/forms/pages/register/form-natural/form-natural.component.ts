@@ -33,7 +33,9 @@ export class FormNaturalComponent implements OnInit {
       email: ['', {validators: [Validators.required, Validators.email]}],
       password: ['', {validators: [Validators.required, Validators.minLength(8)]}],
       typeaccount: [''],
-      persona: ['']
+      persona: [''],
+      ruc: [null],
+      comname: [null]
     });
   }
 
@@ -53,7 +55,6 @@ export class FormNaturalComponent implements OnInit {
         typeaccount: tipoCuenta.tipocuenta.tacc,
         persona: tipoCuenta.persona
       });
-      console.log(tipoCuenta); // COLOCAR LOS CAMPOS QUE SEAN NECESARIOS EN EL registerForm
     });
   }
 

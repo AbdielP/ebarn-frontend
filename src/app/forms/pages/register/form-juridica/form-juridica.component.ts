@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
+import { GeneralService } from 'src/app/services/general.service';
 
 @Component({
   selector: 'app-form-juridica',
@@ -15,7 +16,7 @@ export class FormJuridicaComponent implements OnInit {
   registerForm: any;
   phones: any;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private generalService: GeneralService) { }
 
   ngOnInit(): void {
     this.subscribeEvent();
@@ -53,12 +54,13 @@ export class FormJuridicaComponent implements OnInit {
         typeaccount: tipoCuenta.tipocuenta.tacc,
         persona: tipoCuenta.persona
       });
-      console.log(tipoCuenta);
     });
   }
 
   onSubmit(): void{
-    console.log(this.registerForm.getRawValue());
+    this.generalService.insertAccount(this.registerForm.getRawValue()).subscribe((resp: any) => {
+      console.log(resp);
+    });
   }
 
   addExtraPhones(): void {
