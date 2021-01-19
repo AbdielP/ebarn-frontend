@@ -1,3 +1,4 @@
+import { ErrorhandlerService } from 'src/app/services/error/errorhandler.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
@@ -11,12 +12,12 @@ export class GeneralService {
 
   private SERVER_URL = environment.SERVER_URL;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private errorHandler: ErrorhandlerService) { }
 
   insertAccount(body: any): Observable<any> {
     return this.http.post(`${this.SERVER_URL}/insertacc`, body)
     .pipe((catchError(err => [
-      console.log('ERROR: ', err)
+      this.errorHandler.errorHandler(err)
     ])));
   }
 }

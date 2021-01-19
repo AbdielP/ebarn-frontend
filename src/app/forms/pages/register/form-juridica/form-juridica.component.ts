@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { GeneralService } from 'src/app/services/general.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-juridica',
@@ -59,7 +60,9 @@ export class FormJuridicaComponent implements OnInit {
 
   onSubmit(): void{
     this.generalService.insertAccount(this.registerForm.getRawValue()).subscribe((resp: any) => {
-      console.log(resp);
+      if (resp.ok) {
+        Swal.fire('Usuario creado correctamente.', `${resp.message}`, 'success');
+      }
     });
   }
 

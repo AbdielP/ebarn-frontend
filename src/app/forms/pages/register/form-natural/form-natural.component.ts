@@ -2,6 +2,7 @@ import { GeneralService } from 'src/app/services/general.service';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-natural',
@@ -61,7 +62,10 @@ export class FormNaturalComponent implements OnInit {
   onSubmit(): void {
     // Llamado al servicio para insertar/crear cuenta
     this.generalService.insertAccount(this.registerForm.getRawValue()).subscribe((resp: any) => {
-      console.log(resp);
+      // console.log(resp);
+      if (resp.ok) {
+        Swal.fire('Usuario creado correctamente.', `${resp.message}`, 'success');
+      }
     });
   }
 
