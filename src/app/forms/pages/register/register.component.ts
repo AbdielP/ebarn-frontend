@@ -24,4 +24,10 @@ export class RegisterComponent implements OnInit {
     this.eventSubject.next({tipoCuenta});
   }
 
+  ocultarForm(e: any): void {
+    console.log(e.persona);
+    this.tipoCuenta = [];
+    // this.tipoCuenta.persona = e.persona;
+  }
+
 }

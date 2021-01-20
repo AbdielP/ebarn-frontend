@@ -1,6 +1,6 @@
 import { GeneralService } from 'src/app/services/general.service';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
 
@@ -13,6 +13,7 @@ export class FormNaturalComponent implements OnInit {
 
   eventSubscription: Subscription;
   @Input() events: Observable<any>;
+  @Output() emitirPersona: EventEmitter<any> = new EventEmitter();
 
   registerForm: any;
   phones: any;
@@ -79,6 +80,10 @@ export class FormNaturalComponent implements OnInit {
 
   removeExtraPhones(i: number): void {
     this.telephones.removeAt(i);
+  }
+
+  hideForm(tipopersona: number): void {
+    this.emitirPersona.emit({persona: tipopersona});
   }
 
 }

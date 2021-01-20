@@ -1,5 +1,20 @@
 <div class="container main">
+
     <ng-container *ngIf="tipoCuenta.length < 1">
+        <app-account-type (emititirTipoCuenta)="getTipoCuenta($event)"></app-account-type>
+        <div class="col-md-3">
+            <p class="text-success text-center lead">¿Ya tienes una cuenta?</p>
+            <p class="text-muted text-center">Inicia sesión con tu correo eléctronico y contraseña.</p>
+            <hr>
+            <a [routerLink]="['/forms/login']" routerLinkActive="router-link-active"  class="btn btn-sm btn-block btn-success">Iniciar sesión</a>
+        </div>
+    </ng-container>
+    
+    <app-form-natural [events]="eventSubject.asObservable()" (emitirPersona)="ocultarForm($event)" [hidden]="tipoCuenta.persona !== 1"></app-form-natural>
+    <app-form-juridica [events]="eventSubject.asObservable()" (emitirPersona)="ocultarForm($event)" [hidden]="tipoCuenta.persona !== 2"></app-form-juridica> 
+
+
+    <!-- <ng-container *ngIf="tipoCuenta.length < 1">
         <app-account-type (emititirTipoCuenta)="getTipoCuenta($event)"></app-account-type>
         <div class="col-md-3">
             <p class="text-success text-center lead">¿Ya tienes una cuenta?</p>
@@ -10,8 +25,6 @@
     </ng-container>
 
     <app-form-natural [events]="eventSubject.asObservable()" [hidden]="tipoCuenta.persona !== 1"></app-form-natural>
-    <app-form-juridica [events]="eventSubject.asObservable()"  [hidden]="tipoCuenta.persona !== 2"></app-form-juridica>
+    <app-form-juridica [events]="eventSubject.asObservable()"  [hidden]="tipoCuenta.persona !== 2"></app-form-juridica> -->
    
-    <!-- <app-form-natural [events]="eventSubject.asObservable()"></app-form-natural> -->
-    <!-- <app-form-juridica [events]="eventSubject.asObservable()"></app-form-juridica> -->
 </div>
