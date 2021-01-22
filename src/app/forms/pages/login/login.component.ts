@@ -13,7 +13,7 @@ export class LoginComponent {
 
   onSubmit(form: NgForm): void {
     if (form.invalid) { return; }
-    this.authService.login(form).subscribe((resp: any) => {
+    this.authService.login(form, `sp_select_datos_usuario('${form.value.usrn}')`).subscribe((resp: any) => {
       if (resp.ok) {
         console.log(resp);
       }

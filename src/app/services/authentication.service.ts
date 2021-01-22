@@ -14,8 +14,8 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient) { }
 
-  login(form: NgForm): Observable<any> {
-    return this.http.post(`${this.SERVER_URL}/login`, form.value)
+  login(form: NgForm, storedprocedure: string): Observable<any> {
+    return this.http.post(`${this.SERVER_URL}/login/${storedprocedure}`, form.value)
     .pipe(map((resp: any) => {
       // this.setStorage(resp.token);
       return resp;
