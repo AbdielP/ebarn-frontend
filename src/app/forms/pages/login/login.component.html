@@ -13,9 +13,9 @@
             </div>
             <div class="col-md-5 d-flex flex-column justify-content-center align-items-center">
                 <i class="fas fa-store text-success m-3 display-2"></i>
-                <form class='form-signin' name='login' ACTION='login.php' METHOD='POST'>
-                    <input type="email" id="usrn" name="usrn" class="form-control" placeholder="Correo eléctronico" required autofocus>
-                    <input type="password" name="pswd" id="pswd" class="form-control" placeholder="Contraseña" required>
+                <form ngNativeValidate class="form-signin" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" >
+                    <input type="email" id="usrn" name="usrn" class="form-control" autocomplete="on" placeholder="Correo eléctronico" required ngModel>
+                    <input type="password" name="pswd" id="pswd" class="form-control" autocomplete="on" placeholder="Contraseña" required ngModel>
                     
                     <button class="btn btn-sm btn-success btn-block mt-4" type="submit">Entrar</button>
                     
