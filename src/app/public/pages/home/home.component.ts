@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ export class HomeComponent implements OnInit {
 
   eventSubject: Subject<any> = new Subject<any>();
 
-  constructor() { }
+  constructor(public authService: AuthenticationService) { }
 
   ngOnInit(): void {
   }

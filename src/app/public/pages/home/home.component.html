@@ -9,7 +9,7 @@
                     <p class="card-text text-justify">Consulte o publique ofertas de sus productos en este mercado online.</p>
                     <hr>
                     <!-- <a href='ofertas/misofertas.php' class='card-link h6'><i class='fas fa-cash-register'></i> Mis ofertas</a> -->
-                    <p align='center' class='m-0'>[ <a href='#' TARGET='_top'>Iniciar sesión</a> ]</p>
+                    <p *ngIf="!authService.isLogedIn()" align="center" class="m-0">[ <a [routerLink]="['/forms/login']" TARGET="_top">Iniciar sesión</a> ]</p>
                      
                   </div>
             </div>

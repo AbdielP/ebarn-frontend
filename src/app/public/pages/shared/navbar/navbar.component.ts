@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
-  constructor() { }
+  constructor(public authService: AuthenticationService) { }
 
-  ngOnInit(): void {
+  closeSession(): void {
+    // console.log('lol')
+    // Colocar aquí un mensaje de confirmación, si desea cerrar sesión. si=llamar a authservice.logout()
   }
 
 }

@@ -4,8 +4,11 @@
       <a class="p-2 text-dark" [routerLink]="['/home']">Home</a>
       <a class="p-2 text-dark" [routerLink]="['/ofertas']">Ofertas</a>
     </nav>
-    <div class="d-flex flex-column">
+    <div *ngIf="!authService.isLogedIn()" class="d-flex flex-column">
         <p align='center' class='m-0'>Sesión no iniciada</p>
-        <p align='center' class='m-0'>[ <a [routerLink]="['/forms/login']" routerLinkActive="router-link-active"  TARGET='_top'>Iniciar sesión</a> ]</p>
+        <p align='center' class='m-0'>[ <a [routerLink]="['/forms/login']" TARGET='_top'>Iniciar sesión</a> ]</p>
+    </div>
+    <div *ngIf="authService.isLogedIn()" class="d-flex flex-column">
+      <button type="button" class="btn btn-sm btn-link" (click)="closeSession()">Cerrar sesión</button>
     </div>
 </div>
